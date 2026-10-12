@@ -1,0 +1,10 @@
+﻿{
+    "backendRevision":  "24fa8a6a2a3afbeae021051534b384ba49a82f57",
+    "observedAt":  "2026-10-12T22:12:06.890Z",
+    "scenario":  "Ayni e-postanin buyuk harfle tekrar kaydi",
+    "observedStatusCode":  201,
+    "requirementStatus":  "PDF harf duyarliligini belirtmiyor; backend ve proje yoneticisi netlestirmeli.",
+    "evidence":  [
+                     "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 409\nReceived: 201\n    at Object.toBe (\u003cbackend\u003e\\tests\\auth.test.js:83:26)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)"
+                 ]
+}

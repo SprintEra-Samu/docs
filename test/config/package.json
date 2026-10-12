@@ -8,8 +8,11 @@
   "scripts": {
     "start": "node server.js",
     "seed": "node seed.js",
-    "test": "cross-env NODE_ENV=test jest --detectOpenHandles --forceExit",
-    "test:coverage": "cross-env NODE_ENV=test jest --coverage --detectOpenHandles --forceExit"
+    "test": "cross-env NODE_ENV=test jest --detectOpenHandles",
+    "test:coverage": "node tests/scripts/run-jest.cjs --coverage",
+    "test:report": "node tests/scripts/run-jest.cjs",
+    "start:qa": "node tests/scripts/serve-qa.cjs",
+    "test:postman": "node tests/scripts/run-postman.cjs"
   },
   "keywords": [],
   "author": "",
@@ -30,12 +33,16 @@
   "devDependencies": {
     "cross-env": "^10.1.0",
     "jest": "^30.5.2",
+    "newman": "6.2.1",
     "supertest": "^7.3.1"
-
   },
-
   "jest": {
-  "setupFiles": ["./tests/setup/env.js"],
-  "maxWorkers": 1
-}
+    "setupFiles": [
+      "./tests/setup/env.js"
+    ],
+    "maxWorkers": 1,
+    "testMatch": ["**/tests/*.test.js"],
+    "collectCoverageFrom": ["server.js", "{config,controllers,middleware,models,routes,docs}/**/*.js"],
+    "coverageReporters": ["text", "json-summary"]
+  }
 }

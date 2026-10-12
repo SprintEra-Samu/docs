@@ -1,0 +1,346 @@
+{
+  "tool": "Jest",
+  "backendRevision": "24fa8a6a2a3afbeae021051534b384ba49a82f57",
+  "nodeVersion": "v24.14.0",
+  "startedAt": "2026-10-12T22:15:05.689Z",
+  "completedAt": "2026-10-12T22:15:11.321Z",
+  "counts": {
+    "total": 53,
+    "passed": 47,
+    "failed": 6,
+    "pending": 0,
+    "suites": 4
+  },
+  "results": [
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "POST /api/auth/register geçerli bilgilerle 201 döner ve şifre bilgisi sızdırmaz",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "POST /api/auth/register varsayılan rol \"Ekip Üyesi\" atanır",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "POST /api/auth/register şifre veritabanında bcrypt hash olarak saklanır",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "POST /api/auth/register name eksikse 400 döner",
+      "status": "failed",
+      "failures": [
+        "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n    at toBe (<backend>\\tests\\auth.test.js:55:44)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)"
+      ]
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "POST /api/auth/register email eksikse 400 döner",
+      "status": "failed",
+      "failures": [
+        "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n    at toBe (<backend>\\tests\\auth.test.js:55:44)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)"
+      ]
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "POST /api/auth/register password eksikse 400 döner",
+      "status": "failed",
+      "failures": [
+        "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n    at toBe (<backend>\\tests\\auth.test.js:55:44)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)"
+      ]
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "POST /api/auth/register geçersiz e-posta \"abc\" 400 döner",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "POST /api/auth/register geçersiz e-posta \"a@b\" 400 döner",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "POST /api/auth/register geçersiz e-posta \"@sprintera.test\" 400 döner",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "POST /api/auth/register geçersiz e-posta \"a b@sprintera.test\" 400 döner",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "POST /api/auth/register geçersiz e-posta \"a@@sprintera.test\" 400 döner",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "POST /api/auth/register aynı e-posta ikinci kez kaydedilemez (409)",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "POST /api/auth/register ek keşif senaryoları e-posta büyük/küçük harf keşfinde sözleşmedeki 201/409 yanıtı döner",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "POST /api/auth/register ek keşif senaryoları string olmayan şifre 500 yerine 400 döner",
+      "status": "failed",
+      "failures": [
+        "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 400\nReceived: 500\n    at Object.toBe (<backend>\\tests\\auth.test.js:97:26)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)"
+      ]
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "POST /api/auth/login doğru bilgilerle 200, token ve kullanıcı bilgisi döner",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "POST /api/auth/login token doğru payload içerir ve 1 gün geçerlidir",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "POST /api/auth/login yanlış şifrede 401 döner",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "POST /api/auth/login kayıtsız e-postada 401 döner",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "POST /api/auth/login hata mesajı e-posta var/yok bilgisini ele vermez",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "POST /api/auth/login email eksikse 400 döner",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "POST /api/auth/login password eksikse 400 döner",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "POST /api/auth/login ikisi de eksikse 400 döner",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "POST /api/auth/login olası hata: sayısal şifre 500 yerine 400/401 döner",
+      "status": "failed",
+      "failures": [
+        "Error: expect(received).toContain(expected) // indexOf\n\nExpected value: 500\nReceived array: [400, 401]\n    at toContain (<backend>\\tests\\auth.test.js:176:24)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)"
+      ]
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "POST /api/auth/login olası hata: nesne e-posta 500 yerine 400/401 döner",
+      "status": "failed",
+      "failures": [
+        "Error: expect(received).toContain(expected) // indexOf\n\nExpected value: 500\nReceived array: [400, 401]\n    at toContain (<backend>\\tests\\auth.test.js:176:24)\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)"
+      ]
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "GET /api/auth/me token yoksa 401 döner",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "GET /api/auth/me Bearer olmayan şemada 401 döner",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "GET /api/auth/me bozuk token ile 401 döner",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "GET /api/auth/me başka secret ile imzalanmış token 401 döner",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "GET /api/auth/me süresi dolmuş token 401 döner",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "GET /api/auth/me geçerli token ile kullanıcı bilgisini döner, hash sızdırmaz",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/auth.test.js",
+      "scenario": "GET /api/auth/me kullanıcı silinmişse geçerli token ile bile 404 döner",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/api.test.js",
+      "scenario": "SprintEra API Tests GET /api/health should return status ok",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/api.test.js",
+      "scenario": "SprintEra API Tests POST /api/auth/register should create a new user",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/api.test.js",
+      "scenario": "SprintEra API Tests POST /api/auth/login should return a token for valid credentials",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/models.test.js",
+      "scenario": "User modeli geçerli kullanıcı oluşturulur ve created_at dolar",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/models.test.js",
+      "scenario": "User modeli updated_at alanı yoktur (updatedAt: false)",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/models.test.js",
+      "scenario": "User modeli name zorunludur",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/models.test.js",
+      "scenario": "User modeli email zorunludur",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/models.test.js",
+      "scenario": "User modeli password_hash zorunludur",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/models.test.js",
+      "scenario": "User modeli e-posta tekildir",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/models.test.js",
+      "scenario": "User modeli olmayan role_id yabancı anahtar hatası verir",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/models.test.js",
+      "scenario": "User modeli User -> Role ilişkisi include ile çalışır",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/models.test.js",
+      "scenario": "User modeli Role -> Users ilişkisi çalışır",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/models.test.js",
+      "scenario": "Permission ve Role-Permission ilişkisi permission code tekildir",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/models.test.js",
+      "scenario": "Permission ve Role-Permission ilişkisi permission code zorunludur",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/models.test.js",
+      "scenario": "Permission ve Role-Permission ilişkisi role ile permission çoka-çok bağlanır",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/models.test.js",
+      "scenario": "Permission ve Role-Permission ilişkisi aynı permission aynı role iki kez eklenince kayıt çoğalmaz",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/health.test.js",
+      "scenario": "PT-02 Swagger dokümantasyon sayfası açılır",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/health.test.js",
+      "scenario": "PT-02 Swagger Swagger tanımında tüm mevcut API uç noktaları bulunur",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/health.test.js",
+      "scenario": "GET /api/health veritabanı bağlıyken 200 ve ok döner",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/health.test.js",
+      "scenario": "GET /api/health veritabanı kopukken 500 ve disconnected döner",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/health.test.js",
+      "scenario": "Bilinmeyen rotalar (404 handler) GET /api/yok -> 404 ve standart hata formatı",
+      "status": "passed",
+      "failures": []
+    },
+    {
+      "file": "tests/health.test.js",
+      "scenario": "Bilinmeyen rotalar (404 handler) yanlış metot (GET /api/auth/login) -> 404",
+      "status": "passed",
+      "failures": []
+    }
+  ]
+}

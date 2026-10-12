@@ -1,0 +1,393 @@
+{
+  "tool": "Newman",
+  "backendRevision": "24fa8a6a2a3afbeae021051534b384ba49a82f57",
+  "nodeVersion": "v24.14.0",
+  "startedAt": "2026-10-12T22:12:45.436Z",
+  "completedAt": "2026-10-12T22:12:47.243Z",
+  "stats": {
+    "iterations": {
+      "total": 1,
+      "pending": 0,
+      "failed": 0
+    },
+    "items": {
+      "total": 14,
+      "pending": 0,
+      "failed": 0
+    },
+    "scripts": {
+      "total": 15,
+      "pending": 0,
+      "failed": 0
+    },
+    "prerequests": {
+      "total": 14,
+      "pending": 0,
+      "failed": 0
+    },
+    "requests": {
+      "total": 14,
+      "pending": 0,
+      "failed": 0
+    },
+    "tests": {
+      "total": 14,
+      "pending": 0,
+      "failed": 0
+    },
+    "assertions": {
+      "total": 34,
+      "pending": 0,
+      "failed": 3
+    },
+    "testScripts": {
+      "total": 14,
+      "pending": 0,
+      "failed": 0
+    },
+    "prerequestScripts": {
+      "total": 1,
+      "pending": 0,
+      "failed": 0
+    }
+  },
+  "failures": [
+    {
+      "scenario": "PT-06A Eksik name",
+      "test": "PT-06 alan bazlı hata: name",
+      "message": "expected false to deeply equal true"
+    },
+    {
+      "scenario": "PT-06B Eksik email",
+      "test": "PT-06 alan bazlı hata: email",
+      "message": "expected false to deeply equal true"
+    },
+    {
+      "scenario": "PT-06C Eksik password",
+      "test": "PT-06 alan bazlı hata: password",
+      "message": "expected false to deeply equal true"
+    }
+  ],
+  "results": [
+    {
+      "scenario": "PT-01 Health",
+      "method": "GET",
+      "url": "http://127.0.0.1:3001/api/health",
+      "statusCode": 200,
+      "response": {
+        "status": "ok",
+        "database": "connected"
+      },
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "status": "passed"
+        },
+        {
+          "name": "API ve veritabanı çalışıyor",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "scenario": "PT-02A Swagger sayfası",
+      "method": "GET",
+      "url": "http://127.0.0.1:3001/api/docs/",
+      "statusCode": 200,
+      "response": null,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "status": "passed"
+        },
+        {
+          "name": "Swagger HTML ve yükleme scripti",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "scenario": "PT-02B Swagger tüm uç noktalar",
+      "method": "GET",
+      "url": "http://127.0.0.1:3001/api/docs/swagger-ui-init.js",
+      "statusCode": 200,
+      "response": null,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "status": "passed"
+        },
+        {
+          "name": "Mevcut dört API uç noktası Swagger tanımında",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "scenario": "PT-03 Hatalı adres",
+      "method": "GET",
+      "url": "http://127.0.0.1:3001/api/olmayan-adres",
+      "statusCode": 404,
+      "response": {
+        "success": false,
+        "error": "Bulunamadı: İstek yapılan rota mevcut değil.",
+        "details": null
+      },
+      "assertions": [
+        {
+          "name": "HTTP 404",
+          "status": "passed"
+        },
+        {
+          "name": "Ortak hata biçimi",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "scenario": "PT-04 Geçerli kayıt",
+      "method": "POST",
+      "url": "http://127.0.0.1:3001/api/auth/register",
+      "statusCode": 201,
+      "response": {
+        "id": 3,
+        "name": "SprintEra QA Hafta 2",
+        "email": "qa.1791843166050.16118244-3b08-41bc-ac2d-cf11ff188346@sprintera.test",
+        "role_id": 1,
+        "created_at": "2026-10-12T22:12:46.187Z"
+      },
+      "assertions": [
+        {
+          "name": "HTTP 201",
+          "status": "passed"
+        },
+        {
+          "name": "Kullanıcı oluşur ve şifre dönmez",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "scenario": "PT-05 Tekrar kayıt",
+      "method": "POST",
+      "url": "http://127.0.0.1:3001/api/auth/register",
+      "statusCode": 409,
+      "response": {
+        "success": false,
+        "error": "Bu e-posta zaten kayıtlı",
+        "details": null
+      },
+      "assertions": [
+        {
+          "name": "HTTP 409",
+          "status": "passed"
+        },
+        {
+          "name": "Ortak hata biçimi",
+          "status": "passed"
+        },
+        {
+          "name": "Tekrar kayıt hata mesajı",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "scenario": "PT-06A Eksik name",
+      "method": "POST",
+      "url": "http://127.0.0.1:3001/api/auth/register",
+      "statusCode": 400,
+      "response": {
+        "success": false,
+        "error": "Name, email and password are required",
+        "details": null
+      },
+      "assertions": [
+        {
+          "name": "HTTP 400",
+          "status": "passed"
+        },
+        {
+          "name": "Ortak hata biçimi",
+          "status": "passed"
+        },
+        {
+          "name": "PT-06 alan bazlı hata: name",
+          "status": "failed",
+          "error": "expected false to deeply equal true"
+        }
+      ]
+    },
+    {
+      "scenario": "PT-06B Eksik email",
+      "method": "POST",
+      "url": "http://127.0.0.1:3001/api/auth/register",
+      "statusCode": 400,
+      "response": {
+        "success": false,
+        "error": "Name, email and password are required",
+        "details": null
+      },
+      "assertions": [
+        {
+          "name": "HTTP 400",
+          "status": "passed"
+        },
+        {
+          "name": "Ortak hata biçimi",
+          "status": "passed"
+        },
+        {
+          "name": "PT-06 alan bazlı hata: email",
+          "status": "failed",
+          "error": "expected false to deeply equal true"
+        }
+      ]
+    },
+    {
+      "scenario": "PT-06C Eksik password",
+      "method": "POST",
+      "url": "http://127.0.0.1:3001/api/auth/register",
+      "statusCode": 400,
+      "response": {
+        "success": false,
+        "error": "Name, email and password are required",
+        "details": null
+      },
+      "assertions": [
+        {
+          "name": "HTTP 400",
+          "status": "passed"
+        },
+        {
+          "name": "Ortak hata biçimi",
+          "status": "passed"
+        },
+        {
+          "name": "PT-06 alan bazlı hata: password",
+          "status": "failed",
+          "error": "expected false to deeply equal true"
+        }
+      ]
+    },
+    {
+      "scenario": "PT-06D Geçersiz e-posta",
+      "method": "POST",
+      "url": "http://127.0.0.1:3001/api/auth/register",
+      "statusCode": 400,
+      "response": {
+        "success": false,
+        "error": "Geçersiz e-posta formatı",
+        "details": null
+      },
+      "assertions": [
+        {
+          "name": "HTTP 400",
+          "status": "passed"
+        },
+        {
+          "name": "Ortak hata biçimi",
+          "status": "passed"
+        },
+        {
+          "name": "E-posta alanı hata mesajında belirtilir",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "scenario": "PT-07 Doğru giriş",
+      "method": "POST",
+      "url": "http://127.0.0.1:3001/api/auth/login",
+      "statusCode": 200,
+      "response": {
+        "token": "[REDACTED]",
+        "user": {
+          "id": 3,
+          "name": "SprintEra QA Hafta 2",
+          "email": "qa.1791843166050.16118244-3b08-41bc-ac2d-cf11ff188346@sprintera.test",
+          "role_id": 1
+        }
+      },
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "status": "passed"
+        },
+        {
+          "name": "JWT ve kullanıcı bilgisi",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "scenario": "PT-08 Yanlış şifre",
+      "method": "POST",
+      "url": "http://127.0.0.1:3001/api/auth/login",
+      "statusCode": 401,
+      "response": {
+        "success": false,
+        "error": "E-posta veya şifre hatalı",
+        "details": null
+      },
+      "assertions": [
+        {
+          "name": "HTTP 401",
+          "status": "passed"
+        },
+        {
+          "name": "Ortak hata biçimi",
+          "status": "passed"
+        },
+        {
+          "name": "Yanlış şifre hata mesajı",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "scenario": "PT-09 Tokensız kullanıcı bilgisi (ekstra)",
+      "method": "GET",
+      "url": "http://127.0.0.1:3001/api/auth/me",
+      "statusCode": 401,
+      "response": {
+        "success": false,
+        "error": "Erişim reddedildi. Geçerli bir token sağlanmadı.",
+        "details": null
+      },
+      "assertions": [
+        {
+          "name": "HTTP 401",
+          "status": "passed"
+        },
+        {
+          "name": "Ortak hata biçimi",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "scenario": "PT-10 Geçerli token (ekstra)",
+      "method": "GET",
+      "url": "http://127.0.0.1:3001/api/auth/me",
+      "statusCode": 200,
+      "response": {
+        "id": 3,
+        "name": "SprintEra QA Hafta 2",
+        "email": "qa.1791843166050.16118244-3b08-41bc-ac2d-cf11ff188346@sprintera.test",
+        "role_id": 1,
+        "created_at": "2026-10-12T22:12:46.187Z"
+      },
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "status": "passed"
+        },
+        {
+          "name": "Token ile aynı kullanıcının bilgileri döner",
+          "status": "passed"
+        }
+      ]
+    }
+  ]
+}

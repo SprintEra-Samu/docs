@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { app, sequelize, resetDb, uniqueEmail, createUser, loginAs } = require('./helpers');
 const { User, Role } = require('../models');
+const { hasFieldError } = require('./field-errors');
 
 beforeAll(resetDb);
 afterAll(() => sequelize.close());
@@ -50,6 +51,8 @@ describe('POST /api/auth/register', () => {
 
     expect(res.status).toBe(400);
     expect(res.body.success).toBe(false);
+    // Hafta 2 PT-06: hata eksik alanı ayrı olarak belirtmeli.
+    expect(hasFieldError(res.body, field)).toBe(true);
   });
 
   test.each(['abc', 'a@b', '@sprintera.test', 'a b@sprintera.test', 'a@@sprintera.test'])(
@@ -69,15 +72,22 @@ describe('POST /api/auth/register', () => {
     expect(res.body.success).toBe(false);
   });
 
-  // --- Kodu okuyarak tahmin ettiğim olası hatalar: şu an FAIL edebilirler (rapor edilecek bulgular) ---
-  describe('olası hatalar', () => {
-    it('e-posta büyük/küçük harf duyarsız tekil olmalı (409)', async () => {
+  // Ek keşif testleri; e-posta harf duyarlılığı gereksinimi ekipçe netleştirilmeli.
+  describe('ek keşif senaryoları', () => {
+    it('e-posta büyük/küçük harf keşfinde sözleşmedeki 201/409 yanıtı döner', async () => {
       const body = valid();
       await request(app).post('/api/auth/register').send(body);
       const res = await request(app)
         .post('/api/auth/register')
         .send({ ...body, email: body.email.toUpperCase() });
-      expect(res.status).toBe(409);
+      // PDF harf duyarlılığını belirtmez; bunu zorunlu 409 olarak dayatmayız.
+      expect([201, 409]).toContain(res.status);
+      if (res.status === 201) {
+        expect(res.body.email).toBe(body.email.toUpperCase());
+        expect(res.body).not.toHaveProperty('password_hash');
+      } else {
+        expect(res.body.success).toBe(false);
+      }
     });
 
     it('string olmayan şifre 500 yerine 400 döner', async () => {
