@@ -1,0 +1,13 @@
+# QA runtime outputs & local environments
+.env.test
+.runtime-backend/
+.runtime-sprint3/
+node_modules/
+coverage/
+*.raw.json
+
+# Local and OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

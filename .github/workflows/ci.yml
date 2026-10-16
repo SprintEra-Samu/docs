@@ -1,0 +1,24 @@
+name: Docs & QA CI Pipeline
+
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main, dev ]
+
+jobs:
+  qa-safety-check:
+    name: QA Safety & Integrity Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run QA Safety Tests
+        run: node --test test/scripts/sprint3/safety.test.cjs
