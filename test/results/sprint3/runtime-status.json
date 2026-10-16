@@ -1,0 +1,9 @@
+{
+  "runId": "2026-10-16T08-17-01-734Z",
+  "checkedAt": "2026-10-16T08:28:30.955Z",
+  "qaApi": "stopped",
+  "qaPostgreSQL": "stopped",
+  "qaDataPreserved": true,
+  "existingWindowsPostgreSQL": "running on 5432; unchanged",
+  "qaLifecycleCheck": "preserved cluster start -> pg_isready accepted -> stop succeeded"
+}

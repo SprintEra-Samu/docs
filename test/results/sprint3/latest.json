@@ -1,0 +1,1033 @@
+{
+  "schemaVersion": 1,
+  "runId": "2026-10-16T08-17-01-734Z",
+  "startedAt": "2026-10-16T08:17:03.115Z",
+  "backendRevision": "dde1a34c90dc66af9dbc7e547218629fa425077d",
+  "nodeVersion": "v24.14.0",
+  "dependencyLocks": [
+    {
+      "path": "test/config/package-lock.json",
+      "role": "QA ve Backend çalışma bağımlılıkları",
+      "algorithm": "sha256",
+      "sha256": "814114df5be92e143fb805b8dfbad6ecc62ec5df993263f81e6d7c0bd0ee259e",
+      "bytes": 289768
+    },
+    {
+      "path": "backend/package-lock.json",
+      "role": "Kaynak snapshot referansı; kurulum QA lock üzerinden",
+      "algorithm": "sha256",
+      "sha256": "e3954fa02ab3a2763066030a5fa1c384474ccc9c0d6e56daa6bad4f0b7395fdc",
+      "bytes": 259022
+    }
+  ],
+  "executionAttempted": true,
+  "scope": "PT-01–PT-08, PT-11–PT-19; setup ve EK kontroller ayrı",
+  "database": "SprintEra_sprint3_test",
+  "schemaPreparation": "Sequelize sync, force/alter kullanılmaz; migration testi değildir",
+  "newmanVersion": "6.2.1",
+  "targetIdentityVerified": true,
+  "runnerError": null,
+  "completedAt": "2026-10-16T08:17:06.738Z",
+  "requiredSummary": {
+    "PASS": 16,
+    "FAIL": 1,
+    "BLOCKED": 0
+  },
+  "scenarios": [
+    {
+      "id": "PT-01",
+      "result": "PASS",
+      "requestCount": 1,
+      "owner": null
+    },
+    {
+      "id": "PT-02",
+      "result": "PASS",
+      "requestCount": 2,
+      "owner": null
+    },
+    {
+      "id": "PT-03",
+      "result": "PASS",
+      "requestCount": 1,
+      "owner": null
+    },
+    {
+      "id": "PT-04",
+      "result": "PASS",
+      "requestCount": 1,
+      "owner": null
+    },
+    {
+      "id": "PT-05",
+      "result": "PASS",
+      "requestCount": 1,
+      "owner": null
+    },
+    {
+      "id": "PT-06",
+      "result": "FAIL",
+      "requestCount": 4,
+      "owner": null
+    },
+    {
+      "id": "PT-07",
+      "result": "PASS",
+      "requestCount": 1,
+      "owner": null
+    },
+    {
+      "id": "PT-08",
+      "result": "PASS",
+      "requestCount": 1,
+      "owner": null
+    },
+    {
+      "id": "PT-11",
+      "result": "PASS",
+      "requestCount": 1,
+      "owner": "Backend 1"
+    },
+    {
+      "id": "PT-12",
+      "result": "PASS",
+      "requestCount": 1,
+      "owner": "Backend 1"
+    },
+    {
+      "id": "PT-13",
+      "result": "PASS",
+      "requestCount": 1,
+      "owner": "Backend 1"
+    },
+    {
+      "id": "PT-14",
+      "result": "PASS",
+      "requestCount": 1,
+      "owner": "Backend 1"
+    },
+    {
+      "id": "PT-15",
+      "result": "PASS",
+      "requestCount": 1,
+      "owner": "Backend 1"
+    },
+    {
+      "id": "PT-16",
+      "result": "PASS",
+      "requestCount": 1,
+      "owner": "Backend 1"
+    },
+    {
+      "id": "PT-17",
+      "result": "PASS",
+      "requestCount": 1,
+      "owner": "Backend 1"
+    },
+    {
+      "id": "PT-18",
+      "result": "PASS",
+      "requestCount": 3,
+      "owner": "Backend 2"
+    },
+    {
+      "id": "PT-19",
+      "result": "PASS",
+      "requestCount": 1,
+      "owner": "Backend 1"
+    }
+  ],
+  "requests": [
+    {
+      "name": "PT-01 Health",
+      "scenarioId": "PT-01",
+      "method": "GET",
+      "url": "http://127.0.0.1:3001/api/health",
+      "expectedStatus": 200,
+      "httpStatus": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "status": "PASS"
+        },
+        {
+          "name": "API ve veritabanı çalışıyor",
+          "status": "PASS"
+        }
+      ],
+      "responseTimeMs": 112,
+      "response": {
+        "status": "ok",
+        "database": "connected"
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "PT-02A Swagger sayfası",
+      "scenarioId": "PT-02",
+      "method": "GET",
+      "url": "http://127.0.0.1:3001/api/docs/",
+      "expectedStatus": 200,
+      "httpStatus": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "status": "PASS"
+        },
+        {
+          "name": "Swagger HTML ve yükleme scripti",
+          "status": "PASS"
+        }
+      ],
+      "responseTimeMs": 5,
+      "result": "PASS"
+    },
+    {
+      "name": "PT-02B Swagger tüm uç noktalar",
+      "scenarioId": "PT-02",
+      "method": "GET",
+      "url": "http://127.0.0.1:3001/api/docs/swagger-ui-init.js",
+      "expectedStatus": 200,
+      "httpStatus": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "status": "PASS"
+        },
+        {
+          "name": "Mevcut dört API uç noktası Swagger tanımında",
+          "status": "PASS"
+        }
+      ],
+      "responseTimeMs": 4,
+      "result": "PASS"
+    },
+    {
+      "name": "PT-03 Hatalı adres",
+      "scenarioId": "PT-03",
+      "method": "GET",
+      "url": "http://127.0.0.1:3001/api/olmayan-adres",
+      "expectedStatus": 404,
+      "httpStatus": 404,
+      "assertions": [
+        {
+          "name": "HTTP 404",
+          "status": "PASS"
+        },
+        {
+          "name": "Ortak hata biçimi",
+          "status": "PASS"
+        }
+      ],
+      "responseTimeMs": 3,
+      "response": {
+        "success": false,
+        "error": "Bulunamadı: İstek yapılan rota mevcut değil.",
+        "details": null
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "PT-04 Geçerli kayıt",
+      "scenarioId": "PT-04",
+      "method": "POST",
+      "url": "http://127.0.0.1:3001/api/auth/register",
+      "expectedStatus": 201,
+      "httpStatus": 201,
+      "assertions": [
+        {
+          "name": "HTTP 201",
+          "status": "PASS"
+        },
+        {
+          "name": "Kullanıcı oluşur ve şifre dönmez",
+          "status": "PASS"
+        }
+      ],
+      "responseTimeMs": 118,
+      "response": {
+        "id": 3,
+        "name": "SprintEra QA Hafta 2",
+        "email": "qa.1792138623974.098cde80-57cd-4bcf-8a0d-80b271824b82@sprintera.test",
+        "role_id": 2,
+        "created_at": "2026-10-16T08:17:04.120Z"
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "PT-05 Tekrar kayıt",
+      "scenarioId": "PT-05",
+      "method": "POST",
+      "url": "http://127.0.0.1:3001/api/auth/register",
+      "expectedStatus": 409,
+      "httpStatus": 409,
+      "assertions": [
+        {
+          "name": "HTTP 409",
+          "status": "PASS"
+        },
+        {
+          "name": "Ortak hata biçimi",
+          "status": "PASS"
+        },
+        {
+          "name": "Tekrar kayıt hata mesajı",
+          "status": "PASS"
+        }
+      ],
+      "responseTimeMs": 6,
+      "response": {
+        "success": false,
+        "error": "Bu e-posta zaten kayıtlı",
+        "details": null
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "PT-06A Eksik name",
+      "scenarioId": "PT-06",
+      "method": "POST",
+      "url": "http://127.0.0.1:3001/api/auth/register",
+      "expectedStatus": 400,
+      "httpStatus": 400,
+      "assertions": [
+        {
+          "name": "HTTP 400",
+          "status": "PASS"
+        },
+        {
+          "name": "Ortak hata biçimi",
+          "status": "PASS"
+        },
+        {
+          "name": "PT-06 alan bazlı hata: name",
+          "status": "FAIL",
+          "message": "expected false to deeply equal true"
+        }
+      ],
+      "responseTimeMs": 5,
+      "response": {
+        "success": false,
+        "error": "Name, email and password are required",
+        "details": null
+      },
+      "result": "FAIL"
+    },
+    {
+      "name": "PT-06B Eksik email",
+      "scenarioId": "PT-06",
+      "method": "POST",
+      "url": "http://127.0.0.1:3001/api/auth/register",
+      "expectedStatus": 400,
+      "httpStatus": 400,
+      "assertions": [
+        {
+          "name": "HTTP 400",
+          "status": "PASS"
+        },
+        {
+          "name": "Ortak hata biçimi",
+          "status": "PASS"
+        },
+        {
+          "name": "PT-06 alan bazlı hata: email",
+          "status": "FAIL",
+          "message": "expected false to deeply equal true"
+        }
+      ],
+      "responseTimeMs": 4,
+      "response": {
+        "success": false,
+        "error": "Name, email and password are required",
+        "details": null
+      },
+      "result": "FAIL"
+    },
+    {
+      "name": "PT-06C Eksik password",
+      "scenarioId": "PT-06",
+      "method": "POST",
+      "url": "http://127.0.0.1:3001/api/auth/register",
+      "expectedStatus": 400,
+      "httpStatus": 400,
+      "assertions": [
+        {
+          "name": "HTTP 400",
+          "status": "PASS"
+        },
+        {
+          "name": "Ortak hata biçimi",
+          "status": "PASS"
+        },
+        {
+          "name": "PT-06 alan bazlı hata: password",
+          "status": "FAIL",
+          "message": "expected false to deeply equal true"
+        }
+      ],
+      "responseTimeMs": 3,
+      "response": {
+        "success": false,
+        "error": "Name, email and password are required",
+        "details": null
+      },
+      "result": "FAIL"
+    },
+    {
+      "name": "PT-06D Geçersiz e-posta",
+      "scenarioId": "PT-06",
+      "method": "POST",
+      "url": "http://127.0.0.1:3001/api/auth/register",
+      "expectedStatus": 400,
+      "httpStatus": 400,
+      "assertions": [
+        {
+          "name": "HTTP 400",
+          "status": "PASS"
+        },
+        {
+          "name": "Ortak hata biçimi",
+          "status": "PASS"
+        },
+        {
+          "name": "E-posta alanı hata mesajında belirtilir",
+          "status": "PASS"
+        }
+      ],
+      "responseTimeMs": 4,
+      "response": {
+        "success": false,
+        "error": "Geçersiz e-posta formatı",
+        "details": null
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "PT-07 Doğru giriş",
+      "scenarioId": "PT-07",
+      "method": "POST",
+      "url": "http://127.0.0.1:3001/api/auth/login",
+      "expectedStatus": 200,
+      "httpStatus": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "status": "PASS"
+        },
+        {
+          "name": "JWT ve kullanıcı bilgisi",
+          "status": "PASS"
+        }
+      ],
+      "responseTimeMs": 95,
+      "response": {
+        "token": "[REDACTED]",
+        "user": {
+          "id": 3,
+          "name": "SprintEra QA Hafta 2",
+          "email": "qa.1792138623974.098cde80-57cd-4bcf-8a0d-80b271824b82@sprintera.test",
+          "role_id": 2,
+          "Role": {
+            "id": 2,
+            "name": "Ekip Üyesi"
+          }
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "PT-08 Yanlış şifre",
+      "scenarioId": "PT-08",
+      "method": "POST",
+      "url": "http://127.0.0.1:3001/api/auth/login",
+      "expectedStatus": 401,
+      "httpStatus": 401,
+      "assertions": [
+        {
+          "name": "HTTP 401",
+          "status": "PASS"
+        },
+        {
+          "name": "Ortak hata biçimi",
+          "status": "PASS"
+        },
+        {
+          "name": "Yanlış şifre hata mesajı",
+          "status": "PASS"
+        }
+      ],
+      "responseTimeMs": 92,
+      "response": {
+        "success": false,
+        "error": "E-posta veya şifre hatalı",
+        "details": null
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "SETUP Yönetici girişi",
+      "scenarioId": null,
+      "method": "POST",
+      "url": "http://127.0.0.1:3001/api/auth/login",
+      "expectedStatus": 200,
+      "httpStatus": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "status": "PASS"
+        },
+        {
+          "name": "Yönetici kimliği ve JWT",
+          "status": "PASS"
+        }
+      ],
+      "responseTimeMs": 151,
+      "response": {
+        "token": "[REDACTED]",
+        "user": {
+          "id": 1,
+          "name": "Sprint 3 QA Yönetici",
+          "email": "qa.admin.1792138437209-1bd16a90@sprintera.test",
+          "role_id": 1,
+          "Role": {
+            "id": 1,
+            "name": "Yönetici"
+          }
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "PT-11 Tokensız kullanıcı bilgisi",
+      "scenarioId": "PT-11",
+      "method": "GET",
+      "url": "http://127.0.0.1:3001/api/auth/me",
+      "expectedStatus": 401,
+      "httpStatus": 401,
+      "assertions": [
+        {
+          "name": "HTTP 401",
+          "status": "PASS"
+        },
+        {
+          "name": "Hata mesajı döner",
+          "status": "PASS"
+        }
+      ],
+      "responseTimeMs": 2,
+      "response": {
+        "success": false,
+        "error": "Erişim reddedildi. Geçerli bir token sağlanmadı.",
+        "details": null
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "PT-12 Geçerli token ile kullanıcı bilgisi",
+      "scenarioId": "PT-12",
+      "method": "GET",
+      "url": "http://127.0.0.1:3001/api/auth/me",
+      "expectedStatus": 200,
+      "httpStatus": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "status": "PASS"
+        },
+        {
+          "name": "Doğru kullanıcı; parola dönmez",
+          "status": "PASS"
+        }
+      ],
+      "responseTimeMs": 9,
+      "response": {
+        "id": 3,
+        "name": "SprintEra QA Hafta 2",
+        "email": "qa.1792138623974.098cde80-57cd-4bcf-8a0d-80b271824b82@sprintera.test",
+        "role_id": 2,
+        "created_at": "2026-10-16T08:17:04.120Z",
+        "Role": {
+          "id": 2,
+          "name": "Ekip Üyesi"
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "PT-13 Yönetici ile proje oluşturma",
+      "scenarioId": "PT-13",
+      "method": "POST",
+      "url": "http://127.0.0.1:3001/api/projects",
+      "expectedStatus": 201,
+      "httpStatus": 201,
+      "assertions": [
+        {
+          "name": "HTTP 201",
+          "status": "PASS"
+        },
+        {
+          "name": "Proje alanları ve oluşturan kullanıcı",
+          "status": "PASS"
+        }
+      ],
+      "responseTimeMs": 14,
+      "response": {
+        "id": 1,
+        "name": "Sprint 3 QA 1792138621854-9b4bd5c6",
+        "description": "Sprint 3 izole QA projesi",
+        "date": "2026-10-20",
+        "created_by": 1,
+        "created_at": "2026-10-16T08:17:05.447Z",
+        "updated_at": "2026-10-16T08:17:05.447Z",
+        "creator": {
+          "id": 1,
+          "name": "Sprint 3 QA Yönetici",
+          "email": "qa.admin.1792138437209-1bd16a90@sprintera.test"
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "PT-14 Tokensız proje oluşturma",
+      "scenarioId": "PT-14",
+      "method": "POST",
+      "url": "http://127.0.0.1:3001/api/projects",
+      "expectedStatus": 401,
+      "httpStatus": 401,
+      "assertions": [
+        {
+          "name": "HTTP 401",
+          "status": "PASS"
+        },
+        {
+          "name": "Hata mesajı döner",
+          "status": "PASS"
+        }
+      ],
+      "responseTimeMs": 2,
+      "response": {
+        "success": false,
+        "error": "Erişim reddedildi. Geçerli bir token sağlanmadı.",
+        "details": null
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "PT-15 Eksik proje adı",
+      "scenarioId": "PT-15",
+      "method": "POST",
+      "url": "http://127.0.0.1:3001/api/projects",
+      "expectedStatus": 400,
+      "httpStatus": 400,
+      "assertions": [
+        {
+          "name": "HTTP 400",
+          "status": "PASS"
+        },
+        {
+          "name": "Hata mesajı döner",
+          "status": "PASS"
+        },
+        {
+          "name": "Ad alanına özgü hata",
+          "status": "PASS"
+        }
+      ],
+      "responseTimeMs": 3,
+      "response": {
+        "success": false,
+        "error": "Proje adı zorunludur.",
+        "details": null
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "PT-16 Projeleri listeleme",
+      "scenarioId": "PT-16",
+      "method": "GET",
+      "url": "http://127.0.0.1:3001/api/projects",
+      "expectedStatus": 200,
+      "httpStatus": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "status": "PASS"
+        },
+        {
+          "name": "Oluşturulan proje listede",
+          "status": "PASS"
+        }
+      ],
+      "responseTimeMs": 6,
+      "response": [
+        {
+          "id": 1,
+          "name": "Sprint 3 QA 1792138621854-9b4bd5c6",
+          "description": "Sprint 3 izole QA projesi",
+          "date": "2026-10-20",
+          "created_by": 1,
+          "created_at": "2026-10-16T08:17:05.447Z",
+          "updated_at": "2026-10-16T08:17:05.447Z",
+          "creator": {
+            "id": 1,
+            "name": "Sprint 3 QA Yönetici",
+            "email": "qa.admin.1792138437209-1bd16a90@sprintera.test"
+          }
+        }
+      ],
+      "result": "PASS"
+    },
+    {
+      "name": "PT-17 Projeye görev ekleme",
+      "scenarioId": "PT-17",
+      "method": "POST",
+      "url": "http://127.0.0.1:3001/api/tasks",
+      "expectedStatus": 201,
+      "httpStatus": 201,
+      "assertions": [
+        {
+          "name": "HTTP 201",
+          "status": "PASS"
+        },
+        {
+          "name": "Görev, proje ve atama doğru",
+          "status": "PASS"
+        }
+      ],
+      "responseTimeMs": 14,
+      "response": {
+        "id": 1,
+        "title": "Sprint 3 QA Görev 1792138621854-9b4bd5c6",
+        "description": "Sprint 3 QA görevi",
+        "status": "To Do",
+        "project_id": 1,
+        "assigned_to": 2,
+        "created_at": "2026-10-16T08:17:05.825Z",
+        "updated_at": "2026-10-16T08:17:05.825Z",
+        "project": {
+          "id": 1,
+          "name": "Sprint 3 QA 1792138621854-9b4bd5c6"
+        },
+        "assignee": {
+          "id": 2,
+          "name": "Sprint 3 QA Üye",
+          "email": "qa.member.1792138437209-1bd16a90@sprintera.test"
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "PT-18A Görev durumunu In Progress yapma",
+      "scenarioId": "PT-18",
+      "method": "PATCH",
+      "url": "http://127.0.0.1:3001/api/tasks/1",
+      "expectedStatus": 200,
+      "httpStatus": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "status": "PASS"
+        },
+        {
+          "name": "Aynı görev In Progress oldu",
+          "status": "PASS"
+        }
+      ],
+      "responseTimeMs": 9,
+      "response": {
+        "id": 1,
+        "title": "Sprint 3 QA Görev 1792138621854-9b4bd5c6",
+        "description": "Sprint 3 QA görevi",
+        "status": "In Progress",
+        "project_id": 1,
+        "assigned_to": 2,
+        "created_at": "2026-10-16T08:17:05.825Z",
+        "updated_at": "2026-10-16T08:17:05.918Z",
+        "project": {
+          "id": 1,
+          "name": "Sprint 3 QA 1792138621854-9b4bd5c6"
+        },
+        "assignee": {
+          "id": 2,
+          "name": "Sprint 3 QA Üye",
+          "email": "qa.member.1792138437209-1bd16a90@sprintera.test"
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "PT-18B Görev durumunu Done yapma",
+      "scenarioId": "PT-18",
+      "method": "PATCH",
+      "url": "http://127.0.0.1:3001/api/tasks/1",
+      "expectedStatus": 200,
+      "httpStatus": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "status": "PASS"
+        },
+        {
+          "name": "Aynı görev Done oldu",
+          "status": "PASS"
+        }
+      ],
+      "responseTimeMs": 8,
+      "response": {
+        "id": 1,
+        "title": "Sprint 3 QA Görev 1792138621854-9b4bd5c6",
+        "description": "Sprint 3 QA görevi",
+        "status": "Done",
+        "project_id": 1,
+        "assigned_to": 2,
+        "created_at": "2026-10-16T08:17:05.825Z",
+        "updated_at": "2026-10-16T08:17:06.001Z",
+        "project": {
+          "id": 1,
+          "name": "Sprint 3 QA 1792138621854-9b4bd5c6"
+        },
+        "assignee": {
+          "id": 2,
+          "name": "Sprint 3 QA Üye",
+          "email": "qa.member.1792138437209-1bd16a90@sprintera.test"
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "PT-18C Durum kalıcılığını doğrulama",
+      "scenarioId": "PT-18",
+      "method": "GET",
+      "url": "http://127.0.0.1:3001/api/tasks?projectId=1",
+      "expectedStatus": 200,
+      "httpStatus": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "status": "PASS"
+        },
+        {
+          "name": "Kaydedilmiş görev Done",
+          "status": "PASS"
+        }
+      ],
+      "responseTimeMs": 7,
+      "response": [
+        {
+          "id": 1,
+          "title": "Sprint 3 QA Görev 1792138621854-9b4bd5c6",
+          "description": "Sprint 3 QA görevi",
+          "status": "Done",
+          "project_id": 1,
+          "assigned_to": 2,
+          "created_at": "2026-10-16T08:17:05.825Z",
+          "updated_at": "2026-10-16T08:17:06.001Z",
+          "project": {
+            "id": 1,
+            "name": "Sprint 3 QA 1792138621854-9b4bd5c6"
+          },
+          "assignee": {
+            "id": 2,
+            "name": "Sprint 3 QA Üye",
+            "email": "qa.member.1792138437209-1bd16a90@sprintera.test"
+          }
+        }
+      ],
+      "result": "PASS"
+    },
+    {
+      "name": "PT-19 Olmayan projeye görev ekleme",
+      "scenarioId": "PT-19",
+      "method": "POST",
+      "url": "http://127.0.0.1:3001/api/tasks",
+      "expectedStatus": 404,
+      "httpStatus": 404,
+      "assertions": [
+        {
+          "name": "HTTP 404",
+          "status": "PASS"
+        },
+        {
+          "name": "Hata mesajı döner",
+          "status": "PASS"
+        }
+      ],
+      "responseTimeMs": 5,
+      "response": {
+        "success": false,
+        "error": "Bağlı olduğu proje bulunamadı.",
+        "details": null
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "EK Üye ile proje oluşturma — PDF yetki beklentisi",
+      "scenarioId": null,
+      "method": "POST",
+      "url": "http://127.0.0.1:3001/api/projects",
+      "expectedStatus": 201,
+      "httpStatus": 403,
+      "assertions": [
+        {
+          "name": "HTTP 201",
+          "status": "FAIL",
+          "message": "expected response to have status code 201 but got 403"
+        },
+        {
+          "name": "Üye projesi oluşur",
+          "status": "FAIL",
+          "message": "expected undefined to be a number"
+        }
+      ],
+      "responseTimeMs": 3,
+      "response": {
+        "success": false,
+        "error": "Bu işlemi gerçekleştirmek için yetkiniz bulunmamaktadır.",
+        "details": null
+      },
+      "result": "FAIL"
+    },
+    {
+      "name": "EK Proje detayı",
+      "scenarioId": null,
+      "method": "GET",
+      "url": "http://127.0.0.1:3001/api/projects/1",
+      "expectedStatus": 200,
+      "httpStatus": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "status": "PASS"
+        },
+        {
+          "name": "Doğru proje ve görev ilişkisi",
+          "status": "PASS"
+        }
+      ],
+      "responseTimeMs": 6,
+      "response": {
+        "id": 1,
+        "name": "Sprint 3 QA 1792138621854-9b4bd5c6",
+        "description": "Sprint 3 izole QA projesi",
+        "date": "2026-10-20",
+        "created_by": 1,
+        "created_at": "2026-10-16T08:17:05.447Z",
+        "updated_at": "2026-10-16T08:17:05.447Z",
+        "creator": {
+          "id": 1,
+          "name": "Sprint 3 QA Yönetici",
+          "email": "qa.admin.1792138437209-1bd16a90@sprintera.test"
+        },
+        "tasks": [
+          {
+            "id": 1,
+            "title": "Sprint 3 QA Görev 1792138621854-9b4bd5c6",
+            "status": "Done",
+            "assigned_to": 2
+          }
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "EK Görev atamasını güncelleme",
+      "scenarioId": null,
+      "method": "PATCH",
+      "url": "http://127.0.0.1:3001/api/tasks/1",
+      "expectedStatus": 200,
+      "httpStatus": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "status": "PASS"
+        },
+        {
+          "name": "Yeni atama kaydedildi",
+          "status": "PASS"
+        }
+      ],
+      "responseTimeMs": 9,
+      "response": {
+        "id": 1,
+        "title": "Sprint 3 QA Görev 1792138621854-9b4bd5c6",
+        "description": "Sprint 3 QA görevi",
+        "status": "Done",
+        "project_id": 1,
+        "assigned_to": 3,
+        "created_at": "2026-10-16T08:17:05.825Z",
+        "updated_at": "2026-10-16T08:17:06.504Z",
+        "project": {
+          "id": 1,
+          "name": "Sprint 3 QA 1792138621854-9b4bd5c6"
+        },
+        "assignee": {
+          "id": 3,
+          "name": "SprintEra QA Hafta 2",
+          "email": "qa.1792138623974.098cde80-57cd-4bcf-8a0d-80b271824b82@sprintera.test"
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "name": "EK Görevleri proje ve kişiye göre filtreleme",
+      "scenarioId": null,
+      "method": "GET",
+      "url": "http://127.0.0.1:3001/api/tasks?projectId=1&assignedTo=3",
+      "expectedStatus": 200,
+      "httpStatus": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "status": "PASS"
+        },
+        {
+          "name": "Filtreler ve atama kalıcılığı",
+          "status": "PASS"
+        }
+      ],
+      "responseTimeMs": 4,
+      "response": [
+        {
+          "id": 1,
+          "title": "Sprint 3 QA Görev 1792138621854-9b4bd5c6",
+          "description": "Sprint 3 QA görevi",
+          "status": "Done",
+          "project_id": 1,
+          "assigned_to": 3,
+          "created_at": "2026-10-16T08:17:05.825Z",
+          "updated_at": "2026-10-16T08:17:06.504Z",
+          "project": {
+            "id": 1,
+            "name": "Sprint 3 QA 1792138621854-9b4bd5c6"
+          },
+          "assignee": {
+            "id": 3,
+            "name": "SprintEra QA Hafta 2",
+            "email": "qa.1792138623974.098cde80-57cd-4bcf-8a0d-80b271824b82@sprintera.test"
+          }
+        }
+      ],
+      "result": "PASS"
+    },
+    {
+      "name": "EK Swagger Sprint 3 uç noktaları",
+      "scenarioId": null,
+      "method": "GET",
+      "url": "http://127.0.0.1:3001/api/docs/swagger-ui-init.js",
+      "expectedStatus": 200,
+      "httpStatus": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "status": "PASS"
+        },
+        {
+          "name": "Yeni yollar ve yöntemler Swagger içinde",
+          "status": "PASS"
+        }
+      ],
+      "responseTimeMs": 3,
+      "result": "PASS"
+    }
+  ]
+}

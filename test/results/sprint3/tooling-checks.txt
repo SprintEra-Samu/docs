@@ -1,0 +1,25 @@
+2026-10-16T08:28:30.952Z
+QA tooling checks; real API execution evidence is stored separately.
+
+$ node --test test/scripts/sprint3/safety.test.cjs
+✔ test connection rejects fallback, remote host, wrong database and privileged identity (1.6162ms)
+✔ unexecuted, skipped and assertion-free requests can never be PASS (0.2113ms)
+✔ publishable evidence removes secrets from nested values and assertion messages (0.5982ms)
+✔ only the exact local QA URL and matching server/DB/revision identity can receive tests (0.3624ms)
+✔ unexpected sensitive response fields cannot survive in assertion failure messages (0.583ms)
+✔ invalid local secret JSON does not leak file contents through parser diagnostics (4.2637ms)
+✔ dependent regressions skip without successful registration; PT-04 skips empty password (5.8953ms)
+✔ PT-13 rejects a response whose project description differs from the sent description (4.7814ms)
+✔ dependency lock fingerprint records exact bytes and changes when the lock changes (3.3475ms)
+✔ isolated local PostgreSQL port is accepted while arbitrary ports remain rejected (0.4665ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 144.177
+
+$ node test/scripts/sprint3/verify.cjs
+Statik doğrulama geçti: 29 istek; Week 2 regresyon assertion’ları korundu; PT-09/10 eklenmedi; ortam şablonu boş.

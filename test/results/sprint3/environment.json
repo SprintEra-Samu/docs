@@ -1,0 +1,24 @@
+{
+  "runId": "2026-10-16T08-17-01-734Z",
+  "checkedAt": "2026-10-16T08:22:22.550Z",
+  "postgresql": {
+    "version": "18.6",
+    "database": "SprintEra_sprint3_test",
+    "username": "sprintera_sprint3_qa",
+    "port": 55432,
+    "host": "127.0.0.1/32"
+  },
+  "qaRolePrivileges": {
+    "rolsuper": false,
+    "rolcreatedb": false,
+    "rolcreaterole": false,
+    "rolreplication": false
+  },
+  "newmanVersion": "6.2.1",
+  "existingWindowsService": {
+    "port": 5432,
+    "changed": false
+  },
+  "schemaPreparation": "Sequelize sync without force/alter; Backend seed.js and migrations not executed",
+  "isolation": "separate local PostgreSQL data directory, loopback only, SCRAM authentication"
+}
