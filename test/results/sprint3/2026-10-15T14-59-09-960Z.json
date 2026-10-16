@@ -1,0 +1,458 @@
+{
+  "schemaVersion": 1,
+  "runId": "2026-10-15T14-59-09-960Z",
+  "startedAt": "2026-10-15T14:59:09.961Z",
+  "backendRevision": "dde1a34c90dc66af9dbc7e547218629fa425077d",
+  "nodeVersion": "v24.14.0",
+  "dependencyLocks": [
+    {
+      "path": "test/config/package-lock.json",
+      "role": "QA ve Backend çalışma bağımlılıkları",
+      "algorithm": "sha256",
+      "sha256": "814114df5be92e143fb805b8dfbad6ecc62ec5df993263f81e6d7c0bd0ee259e",
+      "bytes": 289768
+    },
+    {
+      "path": "backend/package-lock.json",
+      "role": "Kaynak snapshot referansı; kurulum QA lock üzerinden",
+      "algorithm": "sha256",
+      "sha256": "e3954fa02ab3a2763066030a5fa1c384474ccc9c0d6e56daa6bad4f0b7395fdc",
+      "bytes": 259022
+    }
+  ],
+  "executionAttempted": false,
+  "scope": "PT-01–PT-08, PT-11–PT-19; setup ve EK kontroller ayrı",
+  "database": "SprintEra_sprint3_test",
+  "schemaPreparation": "Sequelize sync, force/alter kullanılmaz; migration testi değildir",
+  "completedAt": "2026-10-15T14:59:09.980Z",
+  "requiredSummary": {
+    "PASS": 0,
+    "FAIL": 0,
+    "BLOCKED": 17
+  },
+  "scenarios": [
+    {
+      "id": "PT-01",
+      "result": "BLOCKED",
+      "requestCount": 1,
+      "owner": null
+    },
+    {
+      "id": "PT-02",
+      "result": "BLOCKED",
+      "requestCount": 2,
+      "owner": null
+    },
+    {
+      "id": "PT-03",
+      "result": "BLOCKED",
+      "requestCount": 1,
+      "owner": null
+    },
+    {
+      "id": "PT-04",
+      "result": "BLOCKED",
+      "requestCount": 1,
+      "owner": null
+    },
+    {
+      "id": "PT-05",
+      "result": "BLOCKED",
+      "requestCount": 1,
+      "owner": null
+    },
+    {
+      "id": "PT-06",
+      "result": "BLOCKED",
+      "requestCount": 4,
+      "owner": null
+    },
+    {
+      "id": "PT-07",
+      "result": "BLOCKED",
+      "requestCount": 1,
+      "owner": null
+    },
+    {
+      "id": "PT-08",
+      "result": "BLOCKED",
+      "requestCount": 1,
+      "owner": null
+    },
+    {
+      "id": "PT-11",
+      "result": "BLOCKED",
+      "requestCount": 1,
+      "owner": "Backend 1"
+    },
+    {
+      "id": "PT-12",
+      "result": "BLOCKED",
+      "requestCount": 1,
+      "owner": "Backend 1"
+    },
+    {
+      "id": "PT-13",
+      "result": "BLOCKED",
+      "requestCount": 1,
+      "owner": "Backend 1"
+    },
+    {
+      "id": "PT-14",
+      "result": "BLOCKED",
+      "requestCount": 1,
+      "owner": "Backend 1"
+    },
+    {
+      "id": "PT-15",
+      "result": "BLOCKED",
+      "requestCount": 1,
+      "owner": "Backend 1"
+    },
+    {
+      "id": "PT-16",
+      "result": "BLOCKED",
+      "requestCount": 1,
+      "owner": "Backend 1"
+    },
+    {
+      "id": "PT-17",
+      "result": "BLOCKED",
+      "requestCount": 1,
+      "owner": "Backend 1"
+    },
+    {
+      "id": "PT-18",
+      "result": "BLOCKED",
+      "requestCount": 3,
+      "owner": "Backend 2"
+    },
+    {
+      "id": "PT-19",
+      "result": "BLOCKED",
+      "requestCount": 1,
+      "owner": "Backend 1"
+    }
+  ],
+  "requests": [
+    {
+      "name": "PT-01 Health",
+      "scenarioId": "PT-01",
+      "method": "GET",
+      "url": "{{baseUrl}}/api/health",
+      "expectedStatus": 200,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    },
+    {
+      "name": "PT-02A Swagger sayfası",
+      "scenarioId": "PT-02",
+      "method": "GET",
+      "url": "{{baseUrl}}/api/docs/",
+      "expectedStatus": 200,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    },
+    {
+      "name": "PT-02B Swagger tüm uç noktalar",
+      "scenarioId": "PT-02",
+      "method": "GET",
+      "url": "{{baseUrl}}/api/docs/swagger-ui-init.js",
+      "expectedStatus": 200,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    },
+    {
+      "name": "PT-03 Hatalı adres",
+      "scenarioId": "PT-03",
+      "method": "GET",
+      "url": "{{baseUrl}}/api/olmayan-adres",
+      "expectedStatus": 404,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    },
+    {
+      "name": "PT-04 Geçerli kayıt",
+      "scenarioId": "PT-04",
+      "method": "POST",
+      "url": "{{baseUrl}}/api/auth/register",
+      "expectedStatus": 201,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    },
+    {
+      "name": "PT-05 Tekrar kayıt",
+      "scenarioId": "PT-05",
+      "method": "POST",
+      "url": "{{baseUrl}}/api/auth/register",
+      "expectedStatus": 409,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    },
+    {
+      "name": "PT-06A Eksik name",
+      "scenarioId": "PT-06",
+      "method": "POST",
+      "url": "{{baseUrl}}/api/auth/register",
+      "expectedStatus": 400,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    },
+    {
+      "name": "PT-06B Eksik email",
+      "scenarioId": "PT-06",
+      "method": "POST",
+      "url": "{{baseUrl}}/api/auth/register",
+      "expectedStatus": 400,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    },
+    {
+      "name": "PT-06C Eksik password",
+      "scenarioId": "PT-06",
+      "method": "POST",
+      "url": "{{baseUrl}}/api/auth/register",
+      "expectedStatus": 400,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    },
+    {
+      "name": "PT-06D Geçersiz e-posta",
+      "scenarioId": "PT-06",
+      "method": "POST",
+      "url": "{{baseUrl}}/api/auth/register",
+      "expectedStatus": 400,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    },
+    {
+      "name": "PT-07 Doğru giriş",
+      "scenarioId": "PT-07",
+      "method": "POST",
+      "url": "{{baseUrl}}/api/auth/login",
+      "expectedStatus": 200,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    },
+    {
+      "name": "PT-08 Yanlış şifre",
+      "scenarioId": "PT-08",
+      "method": "POST",
+      "url": "{{baseUrl}}/api/auth/login",
+      "expectedStatus": 401,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    },
+    {
+      "name": "SETUP Yönetici girişi",
+      "scenarioId": null,
+      "method": "POST",
+      "url": "{{baseUrl}}/api/auth/login",
+      "expectedStatus": 200,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    },
+    {
+      "name": "PT-11 Tokensız kullanıcı bilgisi",
+      "scenarioId": "PT-11",
+      "method": "GET",
+      "url": "{{baseUrl}}/api/auth/me",
+      "expectedStatus": 401,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    },
+    {
+      "name": "PT-12 Geçerli token ile kullanıcı bilgisi",
+      "scenarioId": "PT-12",
+      "method": "GET",
+      "url": "{{baseUrl}}/api/auth/me",
+      "expectedStatus": 200,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    },
+    {
+      "name": "PT-13 Yönetici ile proje oluşturma",
+      "scenarioId": "PT-13",
+      "method": "POST",
+      "url": "{{baseUrl}}/api/projects",
+      "expectedStatus": 201,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    },
+    {
+      "name": "PT-14 Tokensız proje oluşturma",
+      "scenarioId": "PT-14",
+      "method": "POST",
+      "url": "{{baseUrl}}/api/projects",
+      "expectedStatus": 401,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    },
+    {
+      "name": "PT-15 Eksik proje adı",
+      "scenarioId": "PT-15",
+      "method": "POST",
+      "url": "{{baseUrl}}/api/projects",
+      "expectedStatus": 400,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    },
+    {
+      "name": "PT-16 Projeleri listeleme",
+      "scenarioId": "PT-16",
+      "method": "GET",
+      "url": "{{baseUrl}}/api/projects",
+      "expectedStatus": 200,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    },
+    {
+      "name": "PT-17 Projeye görev ekleme",
+      "scenarioId": "PT-17",
+      "method": "POST",
+      "url": "{{baseUrl}}/api/tasks",
+      "expectedStatus": 201,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    },
+    {
+      "name": "PT-18A Görev durumunu In Progress yapma",
+      "scenarioId": "PT-18",
+      "method": "PATCH",
+      "url": "{{baseUrl}}/api/tasks/{{taskId}}",
+      "expectedStatus": 200,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    },
+    {
+      "name": "PT-18B Görev durumunu Done yapma",
+      "scenarioId": "PT-18",
+      "method": "PATCH",
+      "url": "{{baseUrl}}/api/tasks/{{taskId}}",
+      "expectedStatus": 200,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    },
+    {
+      "name": "PT-18C Durum kalıcılığını doğrulama",
+      "scenarioId": "PT-18",
+      "method": "GET",
+      "url": "{{baseUrl}}/api/tasks?projectId={{projectId}}",
+      "expectedStatus": 200,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    },
+    {
+      "name": "PT-19 Olmayan projeye görev ekleme",
+      "scenarioId": "PT-19",
+      "method": "POST",
+      "url": "{{baseUrl}}/api/tasks",
+      "expectedStatus": 404,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    },
+    {
+      "name": "EK Üye ile proje oluşturma — PDF yetki beklentisi",
+      "scenarioId": null,
+      "method": "POST",
+      "url": "{{baseUrl}}/api/projects",
+      "expectedStatus": 201,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    },
+    {
+      "name": "EK Proje detayı",
+      "scenarioId": null,
+      "method": "GET",
+      "url": "{{baseUrl}}/api/projects/{{projectId}}",
+      "expectedStatus": 200,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    },
+    {
+      "name": "EK Görev atamasını güncelleme",
+      "scenarioId": null,
+      "method": "PATCH",
+      "url": "{{baseUrl}}/api/tasks/{{taskId}}",
+      "expectedStatus": 200,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    },
+    {
+      "name": "EK Görevleri proje ve kişiye göre filtreleme",
+      "scenarioId": null,
+      "method": "GET",
+      "url": "{{baseUrl}}/api/tasks?projectId={{projectId}}&assignedTo={{qaUserId}}",
+      "expectedStatus": 200,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    },
+    {
+      "name": "EK Swagger Sprint 3 uç noktaları",
+      "scenarioId": null,
+      "method": "GET",
+      "url": "{{baseUrl}}/api/docs/swagger-ui-init.js",
+      "expectedStatus": 200,
+      "httpStatus": null,
+      "assertions": [],
+      "result": "BLOCKED",
+      "blockedReason": "Kilitli QA bağımlılıkları henüz kurulu değil; admin.json parola alanı yer tutucu; DB/şema/fixture/API veri yazımı için kullanıcı onayı bekleniyor."
+    }
+  ]
+}
